@@ -46,6 +46,7 @@ router.put(('/:id'), async (req,res)=> {
             name: req.body.name,
             isGold: req.body.isGold,
             phone: req.body.phone
+            
         }, {new:true});
     if (customer) res.status(200).send(customer);
     if (!customer) res.status(404).send('Cannot Update. Requested Customer Not Found.');
