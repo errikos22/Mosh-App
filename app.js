@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require('mongoose');
 const genres = require('./routes/genres');
 const customers = require('./routes/customers');
+const movies = require('./routes/movies');
 const port = process.env.PORT;
 
 //middleware addition. whenever a request hits the backend,
@@ -11,6 +12,7 @@ const port = process.env.PORT;
 app.use(express.json()); //parses incoming JSON requests. populates req.body
 app.use('/api/genres', genres);
 app.use('/api/customers', customers);
+app.use('/api/movies', movies);
 
 //server
 app.listen(port, () => {

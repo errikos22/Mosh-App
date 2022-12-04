@@ -14,3 +14,4 @@ function validateGenre (input) {
 }
 module.exports.Genre=Genre;
 module.exports.validate=validateGenre;
+module.exports.genreSchema=genreSchema;
