@@ -10,9 +10,7 @@ function validateGenre (input) {
     const schema = Joi.object ({
         name: Joi.string().min(3).max(100).trim().lowercase().required()
     });
-    let result = (schema.validate ({name : input}, {convert:false}));
-    console.log(result);
-    return result;
+    return (schema.validate ({name : input}, {convert:false}));
 }
 module.exports.Genre=Genre;
 module.exports.validate=validateGenre;
