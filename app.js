@@ -2,13 +2,15 @@ const express = require ('express');
 const dotenv = require ('dotenv').config();
 const app = express();
 const mongoose = require('mongoose');
-const genres = require('./routes/genres')
+const genres = require('./routes/genres');
+const customers = require('./routes/customers');
 const port = process.env.PORT;
 
 //middleware addition. whenever a request hits the backend,
 //Express will execute the functions passed to app.use() in order.
 app.use(express.json()); //parses incoming JSON requests. populates req.body
 app.use('/api/genres', genres);
+app.use('/api/customers', customers);
 
 //server
 app.listen(port, () => {
