@@ -5,14 +5,16 @@ const mongoose = require('mongoose');
 const genres = require('./routes/genres');
 const customers = require('./routes/customers');
 const movies = require('./routes/movies');
+const rentals = require('./routes/rentals');
 const port = process.env.PORT;
 
 //middleware addition. whenever a request hits the backend,
 //Express will execute the functions passed to app.use() in order.
 app.use(express.json()); //parses incoming JSON requests. populates req.body
-app.use('/api/genres', genres);
+app.use('/api/genres', genres);//delegation of the endpoints of the route handlers
 app.use('/api/customers', customers);
 app.use('/api/movies', movies);
+app.use('/api/rentals', rentals);
 
 //server
 app.listen(port, () => {

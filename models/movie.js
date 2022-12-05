@@ -20,7 +20,7 @@ const movieSchema = new mongoose.Schema({
     required: true
   }
 })
-const Movie = mongoose.model('movie', movieSchema);
+const Movie = new mongoose.model('movie', movieSchema);
 
 function validateMovie(movie) {
   const schema = Joi.object ({
