@@ -40,12 +40,24 @@ try {
       dailyRentalRate: movie.dailyRentalRate
     }
   });
-  rental = await rental.save();
+  //two phase commit operation
+    const session = await mongoose.startSession();
+    await session.withTransaction(async () => {
+      const result = await rental.save();
+      movie.numberInStock--;
+      movie.save();
+      res.send(result);
+    });
+
+    session.endSession();
+    console.log('success');
+
+  /*rental = await rental.save();
 
   movie.numberInStock--;
   movie.save();
   
-  res.send(rental);
+  res.send(rental);*/
 } catch (error) {
     console.log(error);
     res.status(500).send('Internal Server Error');
